@@ -36,19 +36,21 @@ v2 will normalize product sizes to compare prices per kilo or liter.
 
 ## Key findings so far
 
-From exploring the first fortnight of July 2026 (full notes in [`NOTAS.md`](NOTAS.md), in Spanish):
+From exploring the first fortnight of July 2026 (full notes in [`docs/exploration_notes.md`](docs/exploration_notes.md)):
 
 - **Text search is unreliable:** searching "pan" (bread) returns panty liners and panela cheese; "papa" (potato) returns papaya.
 - **The same product is split by spelling:** `Spaghetti No. 5` and `Spaghetti` are likely the same item, which skews any "most common" metric.
 - **9,846 rows are duplicated across catalogs.**
 - **31% of rows have no brand** (`S/M`): technically filled, effectively null.
+- **Store coordinates are sometimes wrong:** two Mega Soriana branches 12 km apart share the same coordinates.
 - **The mean price ($556 MXN) is misleading**, inflated by TVs and appliances; the median is $59.90.
 
 ## Roadmap
 
 - [x] Explore the source data and document its problems
 - [x] Define scope and the v1 basket
-- [ ] Design the architecture (layers, keys, deduplication)
+- [x] Design the architecture (layers, keys, deduplication) → [`docs/architecture.md`](docs/architecture.md)
+- [x] Validate the store key against the data
 - [ ] Load raw data into PostgreSQL running in Docker
 - [ ] Build the clean and analytical layers (star schema)
 - [ ] Incremental loads per fortnight
@@ -65,16 +67,21 @@ datos.gob.mx  →  raw  →  clean  →  analytics  →  dashboard
                           deduped)    schema)
 ```
 
+Details and the evidence behind each decision: [`docs/architecture.md`](docs/architecture.md).
+
 Tools: Python (pandas), PostgreSQL, Docker. More will be added only when there is a concrete reason to.
 
 ## Repository structure
 
 ```
 ├── data/raw/              # source CSVs (not versioned, see below)
+├── docs/
+│   ├── exploration_notes.md   # data profiling findings and scope decisions
+│   └── architecture.md        # layers, keys, deduplication, data quality rules
 ├── scripts/
-│   ├── explorar_datos.py  # data profiling: nulls, duplicates, dates, prices
-│   └── canasta.py         # picks the v1 basket from the data
-├── NOTAS.md               # exploration notes and decisions (Spanish)
+│   ├── explorar_datos.py      # data profiling: nulls, duplicates, dates, prices
+│   ├── canasta.py             # picks the v1 basket from the data
+│   └── validate_store_key.py  # tests the store key against merge/split risks
 └── README.md
 ```
 
@@ -88,6 +95,7 @@ Tools: Python (pandas), PostgreSQL, Docker. More will be added only when there i
 pip install pandas
 python scripts/explorar_datos.py
 python scripts/canasta.py
+python scripts/validate_store_key.py
 ```
 
 Data files are not included in the repository: they are hundreds of MB each and are published by Profeco.
