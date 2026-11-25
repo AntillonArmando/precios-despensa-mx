@@ -144,7 +144,7 @@ Presentation criteria: the most common in Mexico City within scope, sold by at l
 | Papa | 1 Kg. Granel. Alfa/blanca | 247 | 15 |
 | Plátano | 1 Kg. Granel. Tabasco/chiapas/roatán/portalimón | 265 | 15 |
 
-Data: first fortnight of July 2026, Mexico City, in-scope catalogs. Selected with [`scripts/canasta.py`](../scripts/canasta.py).
+Data: first fortnight of July 2026, Mexico City, in-scope catalogs. Selected with [`scripts/select_basket.py`](../scripts/select_basket.py).
 
 ### Findings while choosing the basket
 

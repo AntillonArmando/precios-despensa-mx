@@ -5,7 +5,7 @@ Goal: understand the data BEFORE designing the pipeline.
 This script only observes: it does not clean or modify anything.
 
 Usage (from the project root):
-    python scripts/explorar_datos.py
+    python scripts/explore_data.py
 """
 
 from pathlib import Path

@@ -79,8 +79,8 @@ Tools: Python (pandas), PostgreSQL, Docker. More will be added only when there i
 │   ├── exploration_notes.md   # data profiling findings and scope decisions
 │   └── architecture.md        # layers, keys, deduplication, data quality rules
 ├── scripts/
-│   ├── explorar_datos.py      # data profiling: nulls, duplicates, dates, prices
-│   ├── canasta.py             # picks the v1 basket from the data
+│   ├── explore_data.py        # data profiling: nulls, duplicates, dates, prices
+│   ├── select_basket.py       # picks the v1 basket from the data
 │   └── validate_store_key.py  # tests the store key against merge/split risks
 └── README.md
 ```
@@ -93,8 +93,8 @@ Tools: Python (pandas), PostgreSQL, Docker. More will be added only when there i
 
 ```bash
 pip install pandas
-python scripts/explorar_datos.py
-python scripts/canasta.py
+python scripts/explore_data.py
+python scripts/select_basket.py
 python scripts/validate_store_key.py
 ```
 
