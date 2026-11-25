@@ -1,0 +1,16 @@
+# Datos: no se suben a GitHub (pesan cientos de MB y no son nuestros)
+data/
+
+# Archivos que genera Python
+__pycache__/
+*.pyc
+
+# Entornos virtuales
+.venv/
+venv/
+
+# Secretos (contraseñas, tokens): nunca se suben
+.env
+
+# Configuración local del editor
+.vscode/
