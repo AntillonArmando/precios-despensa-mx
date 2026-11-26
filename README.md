@@ -51,7 +51,7 @@ From exploring the first fortnight of July 2026 (full notes in [`docs/exploratio
 - [x] Define scope and the v1 basket
 - [x] Design the architecture (layers, keys, deduplication) → [`docs/architecture.md`](docs/architecture.md)
 - [x] Validate the store key against the data
-- [ ] Load raw data into PostgreSQL running in Docker
+- [x] Load raw data into PostgreSQL running in Docker
 - [ ] Build the clean and analytical layers (star schema)
 - [ ] Incremental loads per fortnight
 - [ ] Automated data quality checks
